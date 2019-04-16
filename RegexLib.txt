@@ -1,0 +1,3 @@
+[Aa]pa(kah)? chatbot itu \? -> Chatbot merupakan agen cerdas yang meniru kemampuan manusia untuk melakukan percakapan dengan pengguna manusia
+[Bb]agaimana chatbot (di)?(buat|bangun) \? -> Chatbot dibangun dengan menggunakan konsep string matching dan QA
+[Bb]agaimana me(nggunakan)? chatbot \? -> Just ask me anything
