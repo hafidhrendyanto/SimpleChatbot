@@ -66,22 +66,22 @@ for lines in file :
 
 while True:
 	p = input('your question pls: ')
-	pattern = stopword.remove(p)
+	input = stopword.remove(p)
 	valid = 0
 	for i in range(len(queries)):
 		kal = stopword.remove(queries[i])
-		if (bm(kal.lower(),pattern.lower()) != -1):
+		if (bm(input.lower(), kal.lower()) != -1):
 			if (valid == 0):
-				print(bm(kal.lower(), pattern.lower()))
-				percent  = len(pattern)*100/len(kal)
+				print(bm(input.lower(), kal.lower()))
+				percent  = len(input)*100/len(kal)
 				print("Confidence1 : " + str(percent))
 				if (percent > 80):
 					print("-> Answer : "+ answers[i])
 				valid = 1
 		else:
 			if valid == 0:
-				if(bm2(kal.lower(), pattern.lower()) >= 80):
-					print("Confidence2 : " + str(bm2(kal.lower(), pattern.lower())))
+				if(bm2(input.lower(),kal.lower()) >= 80):
+					print("Confidence2 : " + str(bm2(input.lower(), kal.lower())))
 					print("-> Answer : " + answers[i])
 					valid = 1
 
