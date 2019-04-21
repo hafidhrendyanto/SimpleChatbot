@@ -16,14 +16,38 @@ while re.match("exit", inp) == None :
     matchedAnswers = []
     inp = input()
     for i in range(len(queries)) :
+        print("apasi", i)
         matchCount = 0
+        lastidx = 0
+        spacecount = -1
         query = queries[i].split(' ')
+        for sentence in query.copy() :
+            matchobj = re.search(sentence, inp)
+            if (matchobj != None) :
+                if (matchobj.group() == '') :
+                    doublecek = re.findall(sentence, inp)
+                    for cek in doublecek :
+                        if len(cek) != 0 :
+                            matchCount += len(cek)
+                            spacecount += 1
+                            lastidx = re.search(cek, inp).start()
+                            break
+                elif (matchobj.start() >= lastidx) :
+                    matchCount += matchobj.end() - matchobj.start()
+                    spacecount += 1
+                    lastidx = matchobj.end() - 1
+                query.remove(sentence)
+
+        querylen = matchCount + spacecount
         for sentence in query :
-            if (re.search(sentence, inp) != None) :
-                matchCount += len(re.search(sentence, inp).group())
-        percentage = ((matchCount + inp.count(" "))/len(inp))*100
+            querylen += (len(sentence) - (sentence.count("[")*4 + sentence.count("(")*3))
+        if len(inp) > querylen : 
+            percentage = ((matchCount + spacecount)/len(inp))*100
+        else :
+            percentage = ((matchCount + spacecount)/(querylen))*100
         #print((matchCount + inp.count(" ")), len(inp), percentage)
         heapq.heappush(matchedAnswers, ((-1)*percentage, answers[i]))
+    
     while (True) :
         ans = heapq.heappop(matchedAnswers)
         if ((-1)*(ans[0])) >= 80 :
