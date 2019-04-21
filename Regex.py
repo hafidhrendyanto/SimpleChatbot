@@ -48,13 +48,10 @@ while re.match("exit", inp) == None :
         #print((matchCount + inp.count(" ")), len(inp), percentage)
         heapq.heappush(matchedAnswers, ((-1)*percentage, answers[i]))
     
-    while (True) :
-        ans = heapq.heappop(matchedAnswers)
-        if ((-1)*(ans[0])) >= 80 :
-            print("Matched ", (-1)*(ans[0]), "% :", ans[1])
-        else :
-            break
-        if (len(matchedAnswers) == 0):
-            break
-
+    ans = heapq.heappop(matchedAnswers)
+    if ((-1)*(ans[0])) >= 80 :
+        print(ans[1])
+    else : 
+        print("Answer not found, please rearange your query!")
+        
 
