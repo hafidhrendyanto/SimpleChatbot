@@ -19,14 +19,14 @@
 		$temp = exec('python boyermoore.py "'.trim($_POST['ques']," "));
 		echo $temp;
     }
-	// elseif ($_POST['method'] == 'kmp'){
-		// $question = $_POST['question'];
-		// $temp = exec('python KMP.py "'.trim($_POST['question']," "));
-		// echo $temp;
-	// }
-	// elseif ($_POST['method'] == 'bm'){
-		// $question = $_POST['question'];
-		// $temp = exec('python Boyer-Moore.py "'.trim($_POST['question']," "));
-		// echo $temp;
-	// }
+	elseif ($_POST['method'] == 'kmp'){
+		$ques = $_POST['ques'];
+		$temp = exec('python kmp.py "'.trim($_POST['ques']," "));
+		echo $temp;
+	}
+	elseif ($_POST['method'] == 'regex'){
+		$ques = $_POST['ques'];
+		$temp = exec('python regex.py "'.trim($_POST['ques']," "));
+		echo $temp;
+	}
 ?>

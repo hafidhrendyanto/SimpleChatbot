@@ -11,58 +11,82 @@
   <style>
     @font-face {
         font-family: myFirstFont;
-        src: url(FrontageCondensed.otf);
+        src: url(OstrichSans-Black.otf);
     }
     @font-face {
         font-family: secondFont;
         src: url(OstrichSans-Medium.otf);
     }
+    @font-face {
+        font-family: third;
+        src: url(8bitOperatorPlusSC-Bold.ttf);
+    }
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: rgb(177, 163, 163);
+        opacity: 1; /* Firefox */
+    }
     .mainpart h1{
-        font-family: myFirstFont !important;
-        font-size: 9rem;
-        background: red;
-        background: -webkit-linear-gradient(left, #BBCBA7 , #F1C49D, #C8B5A4, #7AA1A0, #768389, rgb(196, 172, 196));
-        background: -o-linear-gradient(right,  #BBCBA7 , #F1C49D, #C8B5A4, #7AA1A0, #768389, rgb(196, 172, 196));
-        background: -moz-linear-gradient(right,  #BBCBA7 , #F1C49D, #C8B5A4, #7AA1A0, #768389, rgb(196, 172, 196));
-        background: linear-gradient(to right,  #BBCBA7 , #F1C49D, #C8B5A4, #7AA1A0, #768389, rgb(196, 172, 196));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-family: third !important;
+        font-size: 7rem;
+        color:black;
+        text-align: center;
+        margin: 4rem auto;
     }
 
     img{
         float: left;
-        width:30%;
+        width:100%;
+    }
+    .container{
+        width: 50%;
+        background-color: beige;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        float: left;
+        padding: 2rem;
     }
     .chatbox{
         overflow-x : hidden;
         height:400px;
-        width:60%;
+        width:100%;
         border:4px solid beige;
         display:flex;
-        float:right;
         position: relative;
+        background-color: beige;
+        margin: auto;
     }
     .send {
-        height:50px;
-        width:100px;
+        height: 50px;
+        width: 120px;
+        border-radius: 20px;
+        border: 1px solid transparent;
+        margin: 0 3rem;
+        padding: 0 2rem;
+        transition: all 0.5s ease-in-out;
+        font-family: myFirstFont;
+    }
+    .send:hover{
+        opacity: 0.5;
     }
     .input-box {
-        background: orange;
+        background:transparent;
         width: 100%;
         display: block;
         clear: both;
         position: absolute;
         bottom: 0px;
+        padding: 10px;
     }
     #sender{
-        padding:0px;
-        width:450px;
-        height:40px;
-        border-radius:5px;
-        border:1px solid black;
-        font-family:sans-serif;
-        font-weight:bold;
-        color:grey;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        width: 100%;
+        height: 40px;
+        border-radius: 5px;
+        border: 1px solid transparent;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #ffffff7a;
+        color: rgb(105, 105, 105);
+        box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
     }
     .message {
         display:block;
@@ -89,12 +113,25 @@
     }
     .convo {
         overflow-y: scroll;
-        height: 86%;
+        height: 69%;
         width: 100%;
         background: white;
+        box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
     }
     .footer {
         display: block;
+        text-align: center;
+        font-family: secondFont;
+        font-size: 2rem;
+        margin: 7rem;
+    }
+    .left{
+        width: 40%;
+        float: left;
+
+    }
+    .mainpart{
+        height: 550px;
     }
 
   </style>
@@ -104,26 +141,31 @@
 <!--main part of the main page-->    
 <div class="mainpart" >
     <h1>KAMFRETO BOT</h1> 
-    <div class="pic">
-        <img src="robot.gif" alt="">
-    </div>
-
-
-    <div class="chatbox">
-        <div class="convo"></div>
-
-        <div class="input-box">
-            <input id="sender" name="text" placeholder="ASK KAMFRETO"/>
-            <!--<button class="send">send</button>-->
-            <input id="bm" class = "send" type="submit" value="bm">
-        </div>
-        
-
+    <div class="left">
+            <div class="pic">
+                <img src="robot.gif" alt="">
+            </div>
     </div>
     
-    <p class="footer">© 2019 Copyright - Hafidh Ayu Samantha</p>
-</div>
 
+    <div class="container">
+        <div class="chatbox">
+                <div class="convo"></div>
+        
+                <div class="input-box">
+                    <input id="sender" name="text" placeholder="Lets ask kamfreto :)"/>
+                    <!--<button class="send">send</button>-->
+                    <input id="bm" class = "send" type="submit" value="bm">
+                    <input id="kmp" class = "send" type="submit" value="kmp">
+                    <input id="regex" class = "send" type="submit" value="regex">
+                </div>
+        </div>
+    </div>
+    
+    
+    
+</div>
+    <p class="footer">© 2019 Copyright - Hafidh Ayu Samantha</p>
 </body>
 </html>
 

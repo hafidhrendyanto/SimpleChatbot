@@ -69,7 +69,6 @@ for lines in file :
 #while True:
 p = sys.argv[1]
 inp = stopword.remove(p)
-print(p)
 
 valid = 0
 for i in range(len(queries)):

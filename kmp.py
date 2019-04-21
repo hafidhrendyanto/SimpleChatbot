@@ -1,5 +1,7 @@
 #bikin tabel2an itu
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
+import json
+import sys
 
 def kmpPreprocess(pattern):
 	patternLength = len(pattern)
@@ -64,8 +66,8 @@ def kmpv2(text, pattern, i):
 			if len(t) > lastidx :
 				t = t[0: 0:] + t[lastidx + 1::]
 	if (counter > len(p)*0.8):
-		print("Jawaban: " + answers[i])
-	print("Confidence = " + str(percent*100/textLength))
+		print(json.dumps(answers[i]))
+	#print("Confidence = " + str(percent*100/textLength))
 
 
 #main prog
@@ -88,23 +90,23 @@ for lines in file :
 	queries.append(line[0])
 	answers.append(line[1])
 
-while 1:
-	p = input('your question pls: ')
-	print()
-	pattern = stopword.remove(p)
-	valid = 0
-	for i in range(len(queries)):
-		kal = stopword.remove(queries[i])
-		if (kmp(kal.lower(),pattern.lower()) != -1):
-			if (valid == 0):
-				percent  = len(pattern)*100/len(kal)
-				print(percent)
-				if (percent > 80):
-					print("Jawaban: "+ answers[i])
-				valid = 1
-		else:
-			if (valid == 0):
-				kmpv2(kal.lower(), pattern.lower(), i)
+p = sys.argv[1]
+pattern = stopword.remove(p)
+valid = 0
+for i in range(len(queries)):
+    kal = stopword.remove(queries[i])
+    if (kmp(kal.lower(),pattern.lower()) != -1):
+        if (valid == 0):
+            percent  = len(pattern)*100/len(kal)
+            if (percent > 80):
+                print(json.dumps(answers[i]))
+            valid = 1
+    else:
+        if (valid == 0):
+            kmpv2(kal.lower(), pattern.lower(), i)
+
+if(valid == 0) :
+    print("tanya yang bener cuy")
 
 
 #kmp buat cek pertama, kalo ketemu lansgung 100 percent
